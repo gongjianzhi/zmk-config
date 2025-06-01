@@ -1,0 +1,14 @@
+file_format: "1"
+id: kakarot
+name: Kakarot
+type: shield
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - encoder
+  - studio
+siblings:
+  - kakarot_left
+  - kakarot_right
