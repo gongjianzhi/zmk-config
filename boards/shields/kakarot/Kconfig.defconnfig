@@ -1,15 +1,14 @@
-if SHIELD_MY_KEYBOARD_LEFT
+if SHIELD_KAKAROT_LEFT
 
-# Name must be less than 16 characters long!
 config ZMK_KEYBOARD_NAME
-    default "kakarot"
+    default "Kakarot"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
+if SHIELD_KAKAROT_LEFT || SHIELD_KAKAROT_RIGHT
 
 config ZMK_SPLIT
     default y
