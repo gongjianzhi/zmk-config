@@ -8,6 +8,10 @@
     transform = <&default_transform>; // Label of the matrix transform this layout uses
 };
 
+&adc {
+	status = "okay";
+};
+
 / {
     chosen {
         zephyr,display = &oled;
@@ -44,16 +48,16 @@
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
         status = "disabled";
     };
 
     right_encoder: encoder_right {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
         status = "disabled";
     };
@@ -63,6 +67,39 @@
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <20>;
     };
+
+    anin0: analog_input_0 {
+		compatible = "zmk,analog-input";
+		sampling-hz = <100>;
+		x-ch {
+			io-channels = <&adc 2>; // <--- see ain-map.png for nRF52840
+			mv-mid = <1630>;
+			mv-min-max = <1600>;
+			mv-deadzone = <10>;
+			scale-multiplier = <1>;
+			scale-divisor = <70>;
+			invert;
+			evt-type = <INPUT_EV_REL>;
+			input-code = <INPUT_REL_X>;
+		};
+		y-ch {
+			io-channels = <&adc 3>; // <--- see ain-map.png for nRF52840
+			mv-mid = <1630>;
+			mv-min-max = <1600>;
+			mv-deadzone = <10>;
+			scale-multiplier = <3>;
+			scale-divisor = <4>;
+			invert;
+			evt-type = <INPUT_EV_REL>;
+			input-code = <INPUT_REL_Y>;
+
+			/* enable report mdoe for gamepad axix or knob */
+			/* to only call input_report on quantquantized value is updated */
+			/* NOTE: mouse input does NOT need this */
+			report-on-change-only;
+
+		};
+	};
 };
 
 &pro_micro_i2c {
