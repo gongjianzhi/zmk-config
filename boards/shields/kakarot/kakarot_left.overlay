@@ -16,3 +16,12 @@
 &left_encoder {
     status = "okay";
 };
+
+&joystick_listener {
+    status = "okay";
+    device = <&anin0>;
+};
+
+&joystick_listener_right {
+    status = "okay";
+}

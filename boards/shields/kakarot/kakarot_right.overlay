@@ -20,3 +20,7 @@
 &right_encoder {
     status = "okay";
 };
+
+&joystick_split {
+    device = <&anin0>;
+};
