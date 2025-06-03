@@ -24,4 +24,4 @@
 
 &joystick_listener_right {
     status = "okay";
-}
+};
