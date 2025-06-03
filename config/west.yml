@@ -6,9 +6,11 @@ manifest:
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
     - name: badjeff
       url-base: https://github.com/badjeff
+    - name: gongjianzhi
+      url-base: https://github.com/gongjianzhi
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: gongjianzhi
       revision: main
       import: app/west.yml
     - name: zmk-analog-input-driver
