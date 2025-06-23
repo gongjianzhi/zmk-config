@@ -55,5 +55,5 @@ anin1: analog_input_1 {
 };
 
 &joystick_split {
-    device = <&anin0>;
+    device = <&anin1>;
 };
