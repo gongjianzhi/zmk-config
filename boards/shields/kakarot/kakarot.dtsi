@@ -105,7 +105,7 @@
 
     joystick_listener: joystick_listener {
         compatible = "zmk,input-listener";
-        input-processors = <&zip_ble_report_rate_limit 8>;
+        input-processors = <&zip_ble_report_rate_limit 16>;
         status = "disabled";
     };
 };
