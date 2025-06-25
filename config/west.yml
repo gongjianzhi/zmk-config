@@ -14,6 +14,9 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-analog-input-driver
+      remote: gongjianzhi
+      revision: main
+    - name: zmk-input-processor-report-rate-limit
       remote: badjeff
       revision: main
   self:

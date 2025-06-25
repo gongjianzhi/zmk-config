@@ -1,6 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <input/processors/report_rate_limit.dtsi>
 
 #include "kakarot-layouts.dtsi"
 
@@ -71,7 +72,7 @@
 
     anin0: analog_input_0 {
         compatible = "zmk,analog-input";
-        sampling-hz = <240>;
+        sampling-hz = <120>;
         y-ch {
             io-channels = <&adc 5>; // <--- see ain-map.png for nRF52840
             mv-mid = <1642>;
@@ -94,7 +95,7 @@
             evt-type = <INPUT_EV_REL>;
             input-code = <INPUT_REL_X>;
 
-            /* enable report mdoe for gamepad axix or knob */
+            /* enable report mode for gamepad axis or knob */
             /* to only call input_report on quantquantized value is updated */
             /* NOTE: mouse input does NOT need this */
             // report-on-change-only;
@@ -104,6 +105,7 @@
 
     joystick_listener: joystick_listener {
         compatible = "zmk,input-listener";
+        input-processors = <&zip_ble_report_rate_limit 8>;
         status = "disabled";
     };
 };
