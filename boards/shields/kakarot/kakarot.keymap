@@ -13,7 +13,7 @@
 &kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp T   &kp LBKT        &kp RBKT   &kp Y   &kp U            &kp I      &kp O    &kp P     &kp BSLH
 &kp LCTRL  &kp A   &kp S   &kp D     &kp F     &kp G   &kp LPAR        &kp RPAR   &kp H   &kp J            &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B   &kp GRAVE       &kp CAPS   &kp N   &kp M            &kp COMMA  &kp DOT  &kp FSLH  &kp RET
-&kp N1     &kp N2  &none   &kp LGUI  &kp LALT  &mo 1   &studio_unlock  &kp SPACE  &mo 2   &kp PRINTSCREEN  &kp DEL    &none    &kp N1    &kp N2 
+&kp N1     &kp N2  &none   &kp LGUI  &kp LALT  &mo 1   &kp SPACE       &kp SPACE  &mo 2   &kp PRINTSCREEN  &kp DEL    &none    &kp N1    &kp N2 
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
@@ -21,11 +21,11 @@
 
         layer_1 {
             bindings = <
-&trans  &kp F1  &kp F2    &kp F3     &kp F4   &kp F5  &kp F6  &kp F7  &kp F8  &kp F9    &kp F10   &kp F11    &kp F12  &trans
-&trans  &trans  &trans    &kp PG_UP  &trans   &trans  &trans  &trans  &trans  &trans    &kp UP    &trans     &trans   &trans
-&trans  &trans  &kp HOME  &kp PG_DN  &kp END  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&trans  &trans  &trans    &trans     &trans   &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans   &trans
-&none    &none  &none     &trans     &trans   &trans  &trans  &trans  &trans  &trans    &trans    &none      &none    &none
+&trans  &kp F1  &kp F2    &kp F3     &kp F4   &kp F5  &kp F6            &kp F7  &kp F8  &kp F9    &kp F10   &kp F11    &kp F12  &trans
+&trans  &trans  &trans    &kp PG_UP  &trans   &trans  &trans            &trans  &trans  &trans    &kp UP    &trans     &trans   &trans
+&trans  &trans  &kp HOME  &kp PG_DN  &kp END  &trans  &trans            &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
+&trans  &trans  &trans    &trans     &trans   &trans  &trans            &trans  &trans  &trans    &trans    &trans     &trans   &trans
+&none    &none  &none     &trans     &trans   &trans  &studio_unlock    &trans  &trans  &trans    &trans    &none      &none    &none
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
