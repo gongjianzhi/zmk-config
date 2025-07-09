@@ -75,21 +75,21 @@
         sampling-hz = <120>;
         y-ch {
             io-channels = <&adc 5>; // <--- see ain-map.png for nRF52840
-            mv-mid = <1642>;
-            mv-min-max = <474>;
+            mv-mid = <1676>;
+            mv-min-max = <1250>;
             mv-deadzone = <10>;
-            scale-multiplier = <1>;
+            scale-multiplier = <2>;
             scale-divisor = <70>;
-            // invert;
+            invert;
             evt-type = <INPUT_EV_REL>;
             input-code = <INPUT_REL_Y>;
         };
         x-ch {
             io-channels = <&adc 7>; // <--- see ain-map.png for nRF52840
-            mv-mid = <1435>;
-            mv-min-max = <1400>;
+            mv-mid = <1606>;
+            mv-min-max = <1250>;
             mv-deadzone = <10>;
-            scale-multiplier = <1>;
+            scale-multiplier = <2>;
             scale-divisor = <70>;
             invert;
             evt-type = <INPUT_EV_REL>;
@@ -105,8 +105,23 @@
 
     joystick_listener: joystick_listener {
         compatible = "zmk,input-listener";
-        input-processors = <&zip_ble_report_rate_limit 8>;
         status = "disabled";
+    };
+
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        joystick_split: joystick_split@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+        };
+    };
+
+    joystick_listener_right: joystick_listener_right {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&joystick_split>;
     };
 };
 
